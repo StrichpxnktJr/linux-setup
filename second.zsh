@@ -1,20 +1,24 @@
 #!/bin/zsh
 
+cd ~
+
 sudo apt install git
 
 sudo apt-get install ninja-build gettext cmake unzip curl
-git clone https://github.com/neovim/neovim
-cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+git clone https://github.com/neovim/neovim ..
+cd ../neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 mkdir ~/.config
 mkdir ~/.config/nvim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
+cd ~
+
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 sudo apt install fonts-powerline -y
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-p10k configure
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -26,6 +30,6 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 && sudo apt update \
 && sudo apt install gh -y
 
-mv .zshrc ..
-cd ..
+rm .zshrc
+mv linux-config/.zshrc .
 rm -d -r linux-setup
