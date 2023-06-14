@@ -31,5 +31,5 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 && sudo apt install gh -y
 
 rm .zshrc
-mv linux-config/.zshrc .
+mv linux-setup/.zshrc .
 rm -d -r linux-setup
