@@ -33,3 +33,5 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 rm .zshrc
 mv linux-setup/.zshrc .
 rm -d -r linux-setup
+
+sudo apt-get install tmux
